@@ -49,8 +49,13 @@ function printStatus(text = lastStatus) {
     cursor.write(chalk.gray(center(text, process.stdout.columns)));
 }
 function updateTargetDrop() {
-    const linea = `${chalk.whiteBright()}Watching ${chalk.magentaBright(global.targetDrop.streamerName)}${chalk.whiteBright()} for ${chalk.cyanBright(global.targetDrop.itemName)}`
-    const lineb = `${chalk.whiteBright()}${(global.targetDrop.progress)}% of ${global.targetDrop.watchTime}.`
+    let drop = global.targetDrop;
+
+    if (drop == null)
+        return;
+
+    const linea = `${chalk.whiteBright()}Watching ${chalk.magentaBright(drop.streamerName)}${chalk.whiteBright()} for ${chalk.cyanBright(global.targetDrop.itemName)}`
+    const lineb = `${chalk.whiteBright()}${(drop.progress)}% of ${drop.watchTime}.`
 
     const lineaStripped = stripAnsi(linea); 
     const linebStripped = stripAnsi(lineb); 
@@ -67,11 +72,14 @@ function updateTargetDrop() {
     })
 
     cursor.goto(0,process.stdout.rows);
-    cursor.write(`${linea} ${bar(global.targetDrop.progress)} ${lineb}`)
+    cursor.write(`${linea} ${bar(drop.progress)} ${lineb}`)
     cursor.hide()
 }
 function printDrops() {
     let drops = global.lastDropData;
+
+    // if (drops)
+
     for (let i = 0; i < drops.length; i++) {
         const drop = drops[i];
         cursor.goto(0,i + watermark.length + 4);
