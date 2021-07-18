@@ -105,3 +105,4 @@ dist
 
 session/cookies.json
 .idea
+.vscode

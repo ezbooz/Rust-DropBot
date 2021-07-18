@@ -5,8 +5,7 @@ function isSaved() {
     return fs.existsSync(`${__dirname}/cookies.json`);
 }
 
-function saveCookies() {
-    let driver = global.driver;
+function saveCookies(driver) {
     driver.manage().getCookies().then(cookies => {
         const ejs = editJsonFile(`${__dirname}/cookies.json`, {autosave:true})
         ejs.set("cookies", cookies);
