@@ -1,0 +1,16 @@
+{
+	"name": "RustDropBot",
+	"version": "1.0.0",
+	"dependencies": {
+		"ansi": "^0.3.1",
+		"ansi-escapes": "^5.0.0",
+		"center-align": "^1.0.1",
+		"chalk": "^4.1.1",
+		"edit-json-file": "^1.6.0",
+		"jsdom": "^16.6.0",
+		"progress-string": "^1.2.2",
+		"selenium-webdriver": "^4.0.0-beta.4",
+		"strip-ansi": "^7.0.0",
+		"superagent": "^6.1.0"
+	}
+}
